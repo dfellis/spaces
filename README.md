@@ -32,7 +32,7 @@ Instantiate a space with a base path. Create namespaces using the *set* method.
 
 Use aliases for long namespaces. The second argument for the *get* method sets a flag to use the alias.
 
-```js
+</pre>
 (function () {
 	var space = new Space('EM.Gallery');
 
@@ -42,4 +42,4 @@ Use aliases for long namespaces. The second argument for the *get* method sets a
 	var long = space.get('long', true);
 	long.testing = true;
 })();
-```
+</pre>
