@@ -21,12 +21,14 @@
 			// Traverse down the path
 			level = level[space];
 		}
+
+		return level;
 	};
 
 	Space.prototype.alias = function (alias, path) {
 		this.aliases[alias] = path;
 
-		this.set(path);
+		return this.set(path);
 	}
 
 	Space.prototype.get = function (path, isAlias) {
