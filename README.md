@@ -2,11 +2,11 @@
 
 Space provides a shorthand for creating and and referencing namespaces.
 
-# Usage
+**Usage**
 
 Instantiate a space with a base path. Create namespaces using the *set* method.
 
-``` js
+``
 (function () {
 	var space = new Space('EM.Gallery');
 
@@ -28,11 +28,11 @@ Instantiate a space with a base path. Create namespaces using the *set* method.
 
 	var UserModel = space.get('models.UserModel');
 })();
-```
+``
 
-Use aliases for long namespaces. The second argument for space.get sets a flag to use the alias.
+Use aliases for long namespaces. The second argument for the *get* method sets a flag to use the alias.
 
-``` js
+``
 (function () {
 	var space = new Space('EM.Gallery');
 
@@ -42,4 +42,4 @@ Use aliases for long namespaces. The second argument for space.get sets a flag t
 	var long = space.get('long', true);
 	long.testing = true;
 })();
-```
+``
