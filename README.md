@@ -7,6 +7,8 @@ Space provides a shorthand for creating and and referencing namespaces.
 Instantiate a space with a base path. Create namespaces using the *set* method.
 
 <code class="javascript">
+// Normal
+
 (function () {
 	var space = new Space('EM.Gallery');
 
@@ -33,6 +35,8 @@ Instantiate a space with a base path. Create namespaces using the *set* method.
 Use aliases for long namespaces. The second argument for the *get* method sets a flag to use the alias.
 
 <code class="javascript">
+// Alias
+
 (function () {
 	var space = new Space('EM.Gallery');
 
