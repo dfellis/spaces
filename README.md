@@ -8,12 +8,12 @@ Instantiate a space with a base path. Create namespaces using the *set* method.
 
 ``` javascript
 (function () {
-	var space = new Space('EM.Gallery');
+var space = new Space('EM.Gallery');
 
- 	// EM.Gallery.views
-	space.set('views');
+// EM.Gallery.views
+space.set('views');
 
-	// EM.Gallery.collections
+// EM.Gallery.collections
 	space.set('collections');
 
 	// EM.Gallery.models
