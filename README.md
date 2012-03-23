@@ -24,9 +24,9 @@ EM.Gallery.set('models');
 
 ##Usage
 
-Instantiate a space with a base path. Create namespaces using the *set* method.
+Instantiate a space with a base path. Create namespaces using the *set* method. Return namespaces using the *get* method.
 
-<pre><code>
+```javascript
 (function () {
 	// EM.Gallery
 	var space = new Space('EM.Gallery');
@@ -49,11 +49,11 @@ Instantiate a space with a base path. Create namespaces using the *set* method.
 
 // EM.Gallery is also a reference to the space, so we can use it outside the module
 EM.Gallery.set('collections');
-</code></pre>
+```
 
 Use aliases for long namespaces. The second argument for the *get* method sets a flag to use the alias.
 
-<pre><code>
+```javascript
 (function () {
 	// EM.Gallery
 	var space = new Space('EM.Gallery');
@@ -64,4 +64,4 @@ Use aliases for long namespaces. The second argument for the *get* method sets a
 	var long = space.get('long', true);
 	long.testing = true;
 })();
-</code></pre>
+```
