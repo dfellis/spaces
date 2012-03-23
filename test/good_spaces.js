@@ -78,3 +78,4 @@
 	root.Spaces = Spaces;
 
 }).call(typeof(window) != 'undefined' ? window : typeof(global) != 'undefined' ? global : this);
+console.log(Spaces);
