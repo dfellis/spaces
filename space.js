@@ -2,15 +2,22 @@
 	var root = this;
 
 	var Space = function (base) {
+		this.set(base);
+
 		this.base = base;
 		this.aliases = {};
-
-		this.set(base);
 	};
 
 	Space.prototype.set = function (path) {
 		var level = root;
-		var fullPath = this.base + '.' + path;
+		var fullPath;
+
+		if (typeof(this.base) !== 'undefined') {
+			fullPath = this.base + '.' + path;
+		} else {
+			fullPath = path;
+		}
+
 		var spaces = fullPath.split('.');
 		var space;
 
