@@ -19,6 +19,9 @@ Instantiate a space with a base path. Create namespaces using the *set* method.
 	// EM.Gallery.models
 	space.set('models');
 
+	// EM.Gallery.utils.date
+	space.set('utils.date');
+
 	EM.Gallery.models.UserModel = Backbone.Model.extend({
 		defaults: {
 			firstName: 'Eric',
