@@ -4,6 +4,8 @@
 	var Space = function (base) {
 		this.base = base;
 		this.aliases = {};
+
+		this.set(base);
 	};
 
 	Space.prototype.set = function (path) {
