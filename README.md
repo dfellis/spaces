@@ -10,6 +10,9 @@ Instantiate a space with a base path. Create namespaces using the *set* method.
 (function () {
 	var space = new Space('EM.Gallery');
 
+	// If we want, we can store the space and refer to it from anywhere
+	EM.Gallery = space;
+
  	// EM.Gallery.views.account
 	space.set('views.account');
 
@@ -24,10 +27,10 @@ Instantiate a space with a base path. Create namespaces using the *set* method.
 	});
 
 	var UserModel = space.get('models.UserModel');
-
-	// Now we can reference the space instance from anywhere
-	EM.Gallery.space = space;
 })();
+
+// Since we set the space to EM.Gallery, we can use it outside the module
+var UserModel = EM.Gallery.get('models.UserModel');
 </code></pre>
 
 Use aliases for long namespaces. The second argument for the *get* method sets a flag to use the alias.
