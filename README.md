@@ -30,7 +30,7 @@ Instantiate a space with a base path. Create namespaces using the *set* method.
 })();
 
 // Since we set the space to EM.Gallery, we can use it outside the module
-var UserModel = EM.Gallery.set('collections');
+EM.Gallery.set('collections');
 </code></pre>
 
 Use aliases for long namespaces. The second argument for the *get* method sets a flag to use the alias.
