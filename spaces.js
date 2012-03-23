@@ -78,3 +78,8 @@
 	root.Spaces = Spaces;
 
 }).call(typeof(window) != 'undefined' ? window : typeof(global) != 'undefined' ? global : this);
+
+// Node.js / CommonJS module support
+if(typeof(module) != 'undefined') {
+	module.exports = Spaces;
+}
