@@ -2,20 +2,20 @@
 	var root = this;
 
 	var Space = function (base) {
-		this.set(base);
-
 		this.base = base;
 		this.aliases = {};
+		
+		this.set(base, true);
 	};
 
-	Space.prototype.set = function (path) {
+	Space.prototype.set = function (path, isBase) {
 		var level = root;
 		var fullPath;
 
-		if (typeof(this.base) !== 'undefined') {
-			fullPath = this.base + '.' + path;
-		} else {
+		if (isBase === true) {
 			fullPath = path;
+		} else {	
+			fullPath = this.base + '.' + path;
 		}
 
 		var spaces = fullPath.split('.');
@@ -25,7 +25,12 @@
 			space = spaces[i];
 
 			// Set up the namespace
-			level[space] = level[space] || {};
+			if (isBase === true && i + 1 >= spaces.length) {
+				console.log(i);
+				level[space] = this;
+			} else {	
+				level[space] = level[space] || {};
+			}
 
 			// Traverse down the path
 			level = level[space];

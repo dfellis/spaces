@@ -1,17 +1,35 @@
-# Space -- Easier namespaces
+#Space -- Easier namespaces
 
-Space provides a shorthand for creating and and referencing namespaces.
+Space provides a shorthand for creating and referencing namespaces.
 
-**Usage**
+##The Old Way
+
+```javascript
+var EM = EM || {};
+
+EM.Gallery = EM.Gallery || {};
+EM.Gallery.views = EM.Gallery.views || {};
+EM.Gallery.views.account = EM.Gallery.views.account || {};
+EM.Gallery.models == EM.Gallery.models || {};
+```
+
+##The New Way
+
+```javascript
+new Space('EM.Gallery');
+
+EM.Gallery.set('views.account');
+EM.Gallery.set('models');
+```
+
+##Usage
 
 Instantiate a space with a base path. Create namespaces using the *set* method.
 
 <pre><code>
 (function () {
+	// EM.Gallery
 	var space = new Space('EM.Gallery');
-
-	// If we want, we can store the space and refer to it from anywhere
-	EM.Gallery = space;
 
  	// EM.Gallery.views.account
 	space.set('views.account');
@@ -29,7 +47,7 @@ Instantiate a space with a base path. Create namespaces using the *set* method.
 	var UserModel = space.get('models.UserModel');
 })();
 
-// Since we set the space to EM.Gallery, we can use it outside the module
+// EM.Gallery is also a reference to the space, so we can use it outside the module
 EM.Gallery.set('collections');
 </code></pre>
 
@@ -37,6 +55,7 @@ Use aliases for long namespaces. The second argument for the *get* method sets a
 
 <pre><code>
 (function () {
+	// EM.Gallery
 	var space = new Space('EM.Gallery');
 
 	// EM.Gallery.a.really.long.namespace
