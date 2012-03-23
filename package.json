@@ -1,0 +1,10 @@
+{
+	"name": "spaces",
+	"version": "0.0.1",
+	"description": "A namespacing library for javascript to easily deal with deeply nested properties in the global object.",
+	"main": "./spaces.js",
+	"contributors": [
+		{"name": "Eric Matthys", "email": "erricmatthys@gmail.com"},
+		{"name": "David Ellis", "email": "d.f.ellis@ieee.org"}
+	]
+}
