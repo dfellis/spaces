@@ -12,7 +12,7 @@
 		return new Space(base);
 	};
 
-	var Space = function (base) {
+	function Space(base) {
 		this.base = base;
 		this.aliases = {};
 		
