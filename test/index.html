@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Spaces Tests</title>
+
+	<link rel="stylesheet" type="text/css" href="qunit.css" />
+
+	<script type="text/javascript" src="../spaces.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript" src="qunit.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			
+			module( "create", {
+				teardown: function() {
+					window.Test = undefined;
+				}
+			});
+
+			test("single create", function() {
+				Spaces.create('Test');
+
+				ok(window.Test, 'The namespace is expected be truthy');
+
+				strictEqual(typeof(window.Test), 'object', 'The created namespace is expected to be an object');
+				strictEqual(window.Test.base, 'Test', 'The base of the namespace is expected to be Test');
+			});
+
+			test("nested create", function() {
+				Spaces.create('Test.NestedTest.DeeplyNestedTest');
+
+				ok(window.Test.NestedTest.DeeplyNestedTest, 'The namespace is expected be truthy');
+
+				strictEqual(typeof(window.Test.NestedTest.DeeplyNestedTest), 'object', 'The created namespace is expected to be an object');
+				strictEqual(window.Test.NestedTest.DeeplyNestedTest.base, 'Test.NestedTest.DeeplyNestedTest', 'The base of the namespace is expected to be Test.Base');
+			});
+
+
+			module( "set", {
+				setup: function() {
+					Spaces.create('Test.NestedTest');
+				},
+				teardown: function() {
+					window.Test = undefined;
+				}
+			});
+
+			test("single set", function() {
+				window.Test.NestedTest.set('DeeplyNestedTest');
+
+				ok(window.Test.NestedTest.DeeplyNestedTest, 'The namespace is expected be truthy');
+
+				strictEqual(typeof(window.Test.NestedTest.DeeplyNestedTest), 'object', 'The created namespace is expected to be an object');
+			});
+
+			test("nested set", function() {
+				window.Test.NestedTest.set('DeeplyNestedTest.FinalNestedTest');
+
+				ok(window.Test.NestedTest.DeeplyNestedTest.FinalNestedTest, 'The namespace is undefined.');
+
+				strictEqual(typeof(window.Test.NestedTest.DeeplyNestedTest.FinalNestedTest), 'object', 'The created namespace is expected to be an object');
+			});
+
+
+			module( "get", {
+				setup: function() {
+					Spaces.create('Test');
+					window.Test.set('NestedTest.DeeplyNestedTest');
+				},
+				teardown: function() {
+					window.Test = undefined;
+				}
+			});
+
+			test("single get", function() {
+				ok(window.Test.get('NestedTest'), 'The retrieved namespace is expected be truthy');
+
+				strictEqual(typeof(window.Test.get('NestedTest')), 'object', 'The retrieved namespace is expected to be an object.');
+			});
+
+			test("nested get", function() {
+				ok(window.Test.get('NestedTest.DeeplyNestedTest'), 'The retrieved namespace is expected be truthy');
+
+				strictEqual(typeof(window.Test.get('NestedTest.DeeplyNestedTest')), 'object', 'The retrieved namespace is expected to be an object');
+			});
+
+
+			module( "alias", {
+				setup: function() {
+					Spaces.create('Test');
+				},
+				teardown: function() {
+					window.Test = undefined;
+				}
+			});
+
+			test("set aliased", function() {
+				window.Test.alias('final', 'NestedTest.DeeplyNestedTest.FinalNestedTest');
+
+				ok(window.Test.NestedTest.DeeplyNestedTest.FinalNestedTest, 'The aliased namespace is expected be truthy');
+
+				strictEqual(typeof(window.Test.NestedTest.DeeplyNestedTest.FinalNestedTest), 'object', 'The aliased namespace is expected to be an object.');
+			});
+
+			test("get aliased", function() {
+				window.Test.alias('final', 'NestedTest.DeeplyNestedTest.FinalNestedTest');
+
+				ok(window.Test.get('final', true), 'The retrieved aliased namespace is expected be truthy');
+
+				strictEqual(window.Test.get('final', true), window.Test.get('NestedTest.DeeplyNestedTest.FinalNestedTest'), 'The aliased namespace is expected to match the retrieved namespace');
+			});
+
+		});
+	</script>
+</head>
+
+<body>
+	<h1 id="qunit-header">QUnit example</h1>
+	<h2 id="qunit-banner"></h2>
+	<div id="qunit-testrunner-toolbar"></div>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
+	<div id="qunit-fixture">test markup, will be hidden</div>
+	</body>
+</html>
