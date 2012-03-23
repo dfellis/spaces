@@ -73,3 +73,6 @@ var AltSpaces = Spaces.noConflict();
 
 AltSpaces.create('EM.Gallery');
 ```
+
+##License
+Spaces is licensed under the terms of the MIT License. See the MIT-LICENSE file for details.
