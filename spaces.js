@@ -1,5 +1,16 @@
 (function () {
 	var root = this;
+	var originalSpaces = root.Spaces;
+	var Spaces = root.Spaces || {};
+	
+	Spaces.noConflict = function () {
+		root.Spaces = originalSpaces;
+		return this;
+	};
+	
+	Spaces.create = function (base) {
+		return new Space(base);
+	};
 
 	var Space = function (base) {
 		this.base = base;
@@ -63,6 +74,6 @@
 	};
 
 	// Attach the constructor to the root
-	root.Space = Space;
+	root.Spaces = Spaces;
 
 }).call(this);
