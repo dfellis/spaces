@@ -1,8 +1,8 @@
-#Space -- Easier namespaces
+#Space -- Easier nested namespaces
 
 Space provides a shorthand for creating and referencing namespaces.
 
-##The Old Way
+##Without Space
 
 ```javascript
 var EM = EM || {};
@@ -13,7 +13,7 @@ EM.Gallery.views.account = EM.Gallery.views.account || {};
 EM.Gallery.models == EM.Gallery.models || {};
 ```
 
-##The New Way
+##With Space
 
 ```javascript
 new Space('EM.Gallery');
