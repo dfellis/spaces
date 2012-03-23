@@ -26,7 +26,6 @@
 
 			// Set up the namespace
 			if (isBase === true && i + 1 >= spaces.length) {
-				console.log(i);
 				level[space] = this;
 			} else {	
 				level[space] = level[space] || {};
