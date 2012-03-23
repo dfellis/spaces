@@ -10,9 +10,6 @@ Instantiate a space with a base path. Create namespaces using the *set* method.
 (function () {
 	var space = new Space('EM.Gallery');
 
-	// Now we can reference this space from anywhere
-	EM.Gallery.space = space;
-
  	// EM.Gallery.views.account
 	space.set('views.account');
 
@@ -27,6 +24,9 @@ Instantiate a space with a base path. Create namespaces using the *set* method.
 	});
 
 	var UserModel = space.get('models.UserModel');
+
+	// Now we can reference the space instance from anywhere
+	EM.Gallery.space = space;
 })();
 </code></pre>
 
